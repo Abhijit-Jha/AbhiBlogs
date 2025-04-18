@@ -34,7 +34,7 @@ const Header = () => {
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="relative text-lg font-semibold text-glow hover:underline transition duration-300"
+                            className="relative text-lg font-semibold text-glow hover:underline transition duration-300 text-black dark:text-white"
                         >
                             {link.name}
                             <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-orange-400 rounded-full animate-pulse" />

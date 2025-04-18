@@ -15,8 +15,8 @@ export default function BlogCard({ title, content, postedAt, link }: BlogCardPro
 
       {/* Content */}
       <div
-        className="whitespace-pre-wrap text-zinc-100 text-base leading-relaxed mb-4"
-        dangerouslySetInnerHTML={{ __html: content }} // Render HTML content safely
+        className="whitespace-pre-wrap text-base text-black dark:text-zinc-100  leading-relaxed mb-4"
+        dangerouslySetInnerHTML={{ __html: content }}
       />
 
       {/* postedAt + Optional Link */}
