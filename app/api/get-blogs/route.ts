@@ -21,12 +21,14 @@ export async function GET() {
       .sort({ postedAt: -1 })
       .lean<RawBlog[]>();
 
-    const formatter = new Intl.DateTimeFormat("en-US", {
+    const formatter = new Intl.DateTimeFormat("en-IN", {
       year: "numeric",
       month: "long",
       day: "numeric",
       hour: "numeric",
+      minute: "2-digit",
       hour12: true,
+      timeZone: "Asia/Kolkata"
     });
 
     const serialized: IBlog[] = posts.map((p) => ({

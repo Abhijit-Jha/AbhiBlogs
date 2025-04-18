@@ -3,8 +3,8 @@
 type BlogCardProps = {
   title: string;
   content: string;
-  postedAt: string; 
-  link?: string;     
+  postedAt: string;
+  link?: string;
 };
 
 export default function BlogCard({ title, content, postedAt, link }: BlogCardProps) {
@@ -14,9 +14,10 @@ export default function BlogCard({ title, content, postedAt, link }: BlogCardPro
       <h2 className="text-2xl font-semibold text-orange-400 mb-4">{title}</h2>
 
       {/* Content */}
-      <div className="whitespace-pre-wrap text-zinc-100 text-base leading-relaxed mb-4">
-        {content}
-      </div>
+      <div
+        className="whitespace-pre-wrap text-zinc-100 text-base leading-relaxed mb-4"
+        dangerouslySetInnerHTML={{ __html: content }} // Render HTML content safely
+      />
 
       {/* postedAt + Optional Link */}
       <div className="flex justify-between items-center text-sm text-zinc-500">

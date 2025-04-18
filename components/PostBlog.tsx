@@ -4,22 +4,19 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
-import dotenv from "dotenv"
-dotenv.config()
+
 export default function PostBlog() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [link, setLink] = useState('');
     const [password, setPassword] = useState('');
-
+    const [Loading,setLoading] = useState(false)
     const handleSubmit = async () => {
-        if (description.length < 20 || description.length > 1000) {
-            toast('Description must be between 20 to 1000 characters');
-            return;
-        }
-
+        setLoading(true);
+        
         if (!password) {
             toast('Bhai Ye page pe kya kar rha hai?? Admin hai tu??');
+            setLoading(false);
             return;
         }
 
@@ -34,8 +31,14 @@ export default function PostBlog() {
 
             toast('Blog Posted!');
             console.log(response.data);
-
+            setDescription("");
+            setLink("")
+            setTitle("")
+            setPassword("")
+            setLoading(false)
+            
         } catch (error: any) {
+            setLoading(false)
             if (error.response?.status === 401) {
                 toast('Bhai Ye page pe kya kar rha hai?? Admin hai tu??');
             } else if (error.response?.status === 400) {
@@ -101,11 +104,12 @@ export default function PostBlog() {
 
                 <motion.button
                     whileHover={{ scale: 1.05 }}
+                    disabled={Loading}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleSubmit}
                     className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-xl transition-all"
                 >
-                    🚀 Post Blog
+                    {Loading ? "Posting Blog..." : "🚀 Post Blog" }
                 </motion.button>
             </div>
         </main>
