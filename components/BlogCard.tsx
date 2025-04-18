@@ -10,16 +10,11 @@ type BlogCardProps = {
 export default function BlogCard({ title, content, postedAt, link }: BlogCardProps) {
   return (
     <div className="text-white rounded-xl p-6 w-full max-w-3xl overflow-hidden">
-      {/* Title */}
       <h2 className="text-2xl font-semibold text-orange-400 mb-4">{title}</h2>
-
-      {/* Content */}
       <div
         className="whitespace-pre-wrap text-base text-black dark:text-zinc-100  leading-relaxed mb-4"
         dangerouslySetInnerHTML={{ __html: content }}
       />
-
-      {/* postedAt + Optional Link */}
       <div className="flex justify-between items-center text-sm text-zinc-500">
         <span>{postedAt}</span>
         {link && (
@@ -34,7 +29,6 @@ export default function BlogCard({ title, content, postedAt, link }: BlogCardPro
         )}
       </div>
 
-      {/* Bottom Separator */}
       <div className="mt-6 h-px bg-zinc-700 w-full" />
     </div>
   );
